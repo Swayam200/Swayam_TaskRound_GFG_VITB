@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Practice Platform</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #2f8d46;
+            /* GFG green */
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .navbar img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        /* Sub-header */
+        .sub-header {
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background: #2f8d46;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #267a3d;
+        }
+
+        /* Results Section */
+        #results {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-left: 4px solid #2f8d46;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="gfg-logo.png" alt="GFG Logo">
+        <h1>GFG VIT Bhopal</h1>
+    </div>
+
+    <div class="container">
+        <h1>Coding Practice Platform</h1>
+        <form id="codeSubmissionForm">
+            <label for="problem">Select Problem:</label>
+            <select id="problem" name="problem_id">
+                <option value="two-sum">Two Sum</option>
+                <option value="fibonacci">Fibonacci Number</option>
+            </select>
+            <label for="code">Your Solution (Python):</label>
+            <textarea id="code" name="code" placeholder="Write your Python code here..." required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        document.getElementById("codeSubmissionForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const problem_id = document.getElementById("problem").value;
+            const code = document.getElementById("code").value;
+
+            const response = await fetch("/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ problem_id, code }),
+            });
+
+            const resultDiv = document.getElementById("results");
+            if (response.ok) {
+                const data = await response.json();
+                resultDiv.innerHTML = `<h2>Results</h2>
+                    <p>Score: ${data.score}%</p>
+                    <p>Passed: ${data.passed_tests}/${data.total_tests}</p>`;
+                data.results.forEach(res => {
+                    resultDiv.innerHTML += `<p>Test ${res.test_number}: ${res.passed ? "✓ Passed" : "✗ Failed"} ${res.error ? `(${res.error})` : ""
+                        }</p>`;
+                });
+            } else {
+                const error = await response.json();
+                resultDiv.innerHTML = `<p>Error: ${error.error}</p>`;
+            }
+        });
+    </script>
+</body>
+
+</html>
