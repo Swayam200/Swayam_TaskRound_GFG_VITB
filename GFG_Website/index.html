@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GFG Student Chapter - VIT Bhopal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --gfg-green: #2f8d46;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: var(--gfg-green);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .gfg-logo {
+            max-height: 40px;
+            margin-right: 10px;
+        }
+
+        .hero-section {
+            background-color: var(--gfg-green);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .event-card {
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .btn-success {
+            background-color: var(--gfg-green);
+            border-color: var(--gfg-green);
+        }
+
+        .division {
+            max-width: 800px;
+            margin: 1rem auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .division-header {
+            background-color: var(--gfg-green);
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .division-header:hover {
+            background-color: #267a3d;
+        }
+
+        .division-content {
+            display: none;
+            padding: 1rem;
+        }
+
+        .division-content.active {
+            display: block;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .member {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="gfg-logo.png" alt="GFG Logo" class="gfg-logo">
+                GFG VIT Bhopal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#events">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section" id="home">
+        <div class="container">
+            <h1>Welcome to GeeksforGeeks Student Chapter</h1>
+            <h2>VIT Bhopal</h2>
+            <p class="lead">Advancing developers beyond expectations</p>
+        </div>
+    </section>
+
+    <section class="container my-5" id="about">
+        <h2 class="text-center mb-4">About Us</h2>
+        <p class="text-center">GeeksforGeeks Student Chapters are University-based community chapters for students interested in Computer Science and
+        who want to make their career in this field.
+        By joining GeeksforGeeks Student Chapter at VIT Bhopal, students will be allowed to expand their knowledge in a peer-to-peer learning environment and
+        build effective and optimized solutions for local businesses and community at VIT Bhopal University.
+
+        </p>
+    </section>
+
+    <section class="container my-5" id="events">
+        <h2 class="text-center mb-4">Upcoming Events</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card event-card">
+                    <img src="geekgala.jpg" alt="Geek Gala 2.0">
+                    <div class="card-body">
+                        <h5 class="card-title">Geek Gala 2.0</h5>
+                        <p class="card-text">Your Tech Carnival Destination!
+                            Join us for an exciting event filled with tech talks, workshops, and networking opportunities.
+                            Here are some of the events you can look forward to:
+                        <ul>
+                            <li>Gate Quest</li>
+                            <li>Game Expo</li>
+                            <li>Target Trivia</li>
+                            <li>Buzzer Blitz</li>
+                            <li>Keyboard Dash</li>
+                        </ul>
+                        </p>
+                        <p class="card-text"><small class="text-muted">Date: January 15, 2024</small></p>
+                        <a href="#" class="btn btn-success">Register Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card event-card">
+                    <img src="geekcraft.jpg" alt="GeekCraft">
+                    <div class="card-body">
+                        <h5 class="card-title">GeekCraft</h5>
+                        <p class="card-text">GameCraft serves as a crucial platform for students to showcase their game
+                            development
+                            talents, fostering creativity, innovation and collaboration within Gaming Community</p>
+                        <p class="card-text"><small class="text-muted">Date: February 1-3, 2024</small></p>
+                        <a href="#" class="btn btn-success">Register Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card event-card">
+                    <img src="dsa101.jpg" alt="DSA 101">
+                    <div class="card-body">
+                        <h5 class="card-title">DSA 101</h5>
+                        <p class="card-text">Industry experts share their knowledge and experiences.</p>
+                        <p class="card-text"><small class="text-muted">Date: January 18, 2024</small></p>
+                        <a href="#" class="btn btn-success">Register Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container my-5" id="team">
+        <h2 class="text-center mb-4">Our Team</h2>
+        <div class="division">
+            <div class="division-header">
+                <h3>Event Management</h3>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="division-content">
+                <div class="team-members">
+                    <div class="member">
+                        <h4>John Doe</h4>
+                        <p>Event Management Lead</p>
+                    </div>
+                    <div class="member">
+                        <h4>Jane Smith</h4>
+                        <p>Event Management Co-Lead</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="division">
+            <div class="division-header">
+                <h3>Technical Division</h3>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="division-content">
+                <div class="team-members">
+                    <div class="member">
+                        <h4>Alex Johnson</h4>
+                        <p>Technical Lead</p>
+                    </div>
+                    <div class="member">
+                        <h4>Sarah Wilson</h4>
+                        <p>Technical Co-Lead</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="division">
+            <div class="division-header">
+                <h3>Social Media Divison</h3>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="division-content">
+                <div class="team-members">
+                    <div class="member">
+                        <h4>Mike Brown</h4>
+                        <p>Social Media Lead</p>
+                    </div>
+                    <div class="member">
+                        <h4>Emily Davis</h4>
+                        <p>Social Media Co-Lead</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="division">
+            <div class="division-header">
+                <h3>Marketing Division</h3>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="division-content">
+                <div class="team-members">
+                    <div class="member">
+                        <h4>Alex Johnson</h4>
+                        <p>Marketing Lead</p>
+                    </div>
+                    <div class="member">
+                        <h4>Sarah Wilson</h4>
+                        <p>Marketing Co-Lead</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="division">
+                    <div class="division-header">
+                        <h3>Design/Branding Division</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="division-content">
+                        <div class="team-members">
+                            <div class="member">
+                                <h4>Alex Johnson</h4>
+                                <p>Design/Branding Lead</p>
+                            </div>
+                            <div class="member">
+                                <h4>Sarah Wilson</h4>
+                                <p>Design/Branding Co-Lead</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="division">
+                <div class="division-header">
+                    <h3>PR & Outreach Division</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="division-content">
+                    <div class="team-members">
+                        <div class="member">
+                            <h4>Alex Johnson</h4>
+                            <p>PR & Outreach Lead</p>
+                        </div>
+                        <div class="member">
+                            <h4>Sarah Wilson</h4>
+                            <p>PR & Outreach Co-Lead</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+    <section class="container my-5" id="contact">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-control">
+                            <option value="">Select Your Year</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <p>
+                        <a href="#" class="text-white text-decoration-none">Instagram</a> |
+                        <a href="#" class="text-white text-decoration-none">LinkedIn</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact</h5>
+                    <p>Email: gfg.vitbhopal@gmail.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Location</h5>
+                    <p>VIT Bhopal University</p>
+                </div>
+            </div>
+            <hr class="bg-white">
+            <p>© 2024 GFG Student Chapter - VIT Bhopal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple JavaScript to handle division expansion
+        document.querySelectorAll('.division-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('active');
+                const arrow = header.querySelector('.arrow');
+                arrow.textContent = content.classList.contains('active') ? '▼' : '▶';
+            });
+        });
+    </script>
+</body>
+
+</html>
