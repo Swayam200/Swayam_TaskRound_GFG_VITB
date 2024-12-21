@@ -6,6 +6,6 @@ Task 1 - A static website for the GeeksforGeeks Student Chapter at VIT Bhopal
 
   
 Task 2 - A mini-platform that allows users to submit solutions to coding problems and automatically evaluates these submissions for correctness.
-Currently, uses only Python language, you can paste any of the available solutions from sample_answers.py in GFG_Coding_Challenge
+Currently, takes in only Javascript as input language, you can paste any of the available solutions from sample_answers.txt in GFG_Coding_Challenge
 
 
