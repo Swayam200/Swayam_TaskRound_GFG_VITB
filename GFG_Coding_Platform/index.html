@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Practice Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #2f8d46;
+            /* GFG green */
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar img {
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        select,
+        textarea,
+        button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+        button {
+            background: #2f8d46;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #267a3d;
+        }
+
+        #results {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-left: 4px solid #2f8d46;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="gfg-logo.png" alt="GFG Logo">
+        <h1>GFG VIT Bhopal</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Coding Practice Platform</h2>
+        <form id="codeSubmissionForm">
+            <label for="problem">Select Problem:</label>
+            <select id="problem">
+                <option value="two-sum">Two Sum</option>
+                <option value="fibonacci">Fibonacci</option>
+            </select>
+
+            <label for="code">Your Solution (JavaScript):</label>
+            <textarea id="code" placeholder="Write your JavaScript code here..."></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const problems = {
+            "two-sum": {
+                title: "Two Sum",
+                description: "Given an array of integers nums and a target value, return the indices of two numbers that add up to the target.",
+                testCases: [
+                    { input: [[2, 7, 11, 15], 9], expected: [0, 1] },
+                    { input: [[3, 2, 4], 6], expected: [1, 2] },
+                    { input: [[3, 3], 6], expected: [0, 1] },
+                ]
+            },
+            "fibonacci": {
+                title: "Fibonacci Number",
+                description: "Calculate the nth Fibonacci number.",
+                testCases: [
+                    { input: [0], expected: 0 },
+                    { input: [1], expected: 1 },
+                    { input: [5], expected: 5 },
+                ]
+            }
+        };
+
+        document.getElementById("codeSubmissionForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const problemKey = document.getElementById("problem").value;
+            const code = document.getElementById("code").value;
+            const problem = problems[problemKey];
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+
+            const evaluate = new Function("input", code);
+            const results = [];
+
+            problem.testCases.forEach((testCase, index) => {
+                try {
+                    const output = evaluate(testCase.input);
+                    const passed = JSON.stringify(output) === JSON.stringify(testCase.expected);
+                    results.push({ testNumber: index + 1, passed, error: null });
+                } catch (err) {
+                    results.push({ testNumber: index + 1, passed: false, error: err.message });
+                }
+            });
+
+            resultsDiv.innerHTML = `<h3>Results</h3>`;
+            results.forEach(result => {
+                resultsDiv.innerHTML += `<p>Test ${result.testNumber}: ${result.passed ? "✓ Passed" : "✗ Failed"} ${result.error ? `(${result.error})` : ""}</p>`;
+            });
+        });
+    </script>
+</body>
+
+</html>
